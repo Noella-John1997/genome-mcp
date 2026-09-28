@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>genome-mcp · ask your genome</title>
+<link rel="stylesheet" href="/static/base.css">
+<link rel="stylesheet" href="/static/app.css">
+</head>
+<body>
+<header class="top"><div class="wrap">
+  <div class="brand"><div class="mark">🧬</div><div>genome-mcp <small>ask your genome</small></div></div>
+  <nav class="tabs"><a class="tab" href="#mcp">Use with Claude</a><a class="tab" href="/docs">API docs</a></nav>
+</div></header>
+<main class="wrap page">
+  <div class="hero">
+    <h1>Ask questions about a genome in plain English</h1>
+    <p>Load a VCF file (or use the synthetic demo sample). Every answer comes from a tool that reads the file — the same tools an AI assistant calls through the Model Context Protocol.</p>
+  </div>
+  <div class="banner" id="disclaimer">Educational demo only — not medical advice. The demo sample is synthetic.</div>
+
+  <div class="card source">
+    <div><div class="muted" style="font-size:12px">Current sample</div><div class="who" id="who">DEMO_SAMPLE (synthetic)</div></div>
+    <div class="row" style="margin-left:auto">
+      <label class="btn sm" for="file">Upload VCF</label><input type="file" id="file" accept=".vcf,.gz" hidden>
+      <button class="btn sm" id="demo">Use demo sample</button>
+      <a class="btn sm" id="dl" href="/api/demo/report.md">Download report</a>
+    </div>
+    <div class="muted" id="upmsg" style="font-size:13px;width:100%">Upload only synthetic or public data (e.g. 1000 Genomes). Files are deleted after 30 minutes.</div>
+  </div>
+
+  <div class="card">
+    <h2>Ask</h2>
+    <form class="ask" id="askform"><input type="text" id="q" placeholder="e.g. Do I carry anything in BRCA1?" autocomplete="off"><button class="btn primary">Ask</button></form>
+    <div class="examples" id="examples"></div>
+    <div class="answer" id="answer"></div>
+  </div>
+
+  <div class="tiles" id="tiles"></div>
+
+  <div class="two">
+    <div class="card"><h2>Clinically relevant findings</h2><div id="findings"></div><p class="muted" style="font-size:13px" id="fnote"></p></div>
+    <div class="stack">
+      <div class="card"><h2>APOE</h2><div id="apoe"></div></div>
+      <div class="card"><h2>Medicines (pharmacogenomics)</h2><div class="table-wrap" id="pgx"></div></div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h2>Gene explorer</h2>
+    <div class="genes" id="genes"></div>
+    <div id="genebox" style="margin-top:14px"></div>
+  </div>
+
+  <div class="card" id="mcp">
+    <h2>Use these tools from Claude Desktop (MCP)</h2>
+    <p class="muted" style="margin-top:0">Install the package, then add this to Claude Desktop → Settings → Developer → Edit Config, and restart. Claude will list 9 genome tools and call them when you ask.</p>
+    <code class="cfg">{
+  "mcpServers": {
+    "genome": {
+      "command": "/full/path/to/.venv/bin/genome-mcp",
+      "args": ["serve", "--vcf", "/full/path/to/your_sample.vcf"]
+    }
+  }
+}</code>
+  </div>
+</main>
+<footer><div class="wrap">genome-mcp · open source · GRCh38 · <a href="/docs">API docs</a></div></footer>
+<script src="/static/app.js"></script>
+</body>
+</html>

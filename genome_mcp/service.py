@@ -14,6 +14,8 @@ from .vcf import VCFReader, summarize
 from .vcf.parser import Variant
 
 SIGNIFICANCE_RANK = {"pathogenic": 3, "likely pathogenic": 2, "risk factor": 1}
+RECESSIVE = {"CFTR", "HFE", "HBB"}               # two faulty copies needed to be affected
+DOMINANT = {"BRCA1", "BRCA2", "TP53", "MLH1", "LDLR"}  # one faulty copy raises risk
 DEMO_VCF = Path(__file__).resolve().parent / "data" / "demo_sample.vcf"
 
 
@@ -88,7 +90,7 @@ class GenomeService:
             rank = max((r for k, r in SIGNIFICANCE_RANK.items() if k in ann.significance.lower()), default=0)
             if rank == 0 or (rank == 1 and not include_risk_factors):
                 continue
-            hits.append({**self._describe(v), "rank": rank})
+            hits.append({**self._describe(v), "rank": rank, "interpretation": _interpret(ann.gene, ann.category, v)})
         hits.sort(key=lambda h: -h["rank"])
         carrier_note = ("Heterozygous pathogenic variants in recessive-disease genes (e.g. CFTR, HFE, HBB) usually "
                         "mean 'carrier', not 'affected'. BRCA1/BRCA2 are dominant: one copy raises cancer risk.")
@@ -164,6 +166,19 @@ class GenomeService:
             lines.append(f"| {r['gene']} | {r['rsid']} | {r.get('copies_of_variant', '-')} | {r.get('effect', r.get('status'))} |")
         lines += ["", "## APOE", "", f"**{ap['genotype']}** — {ap.get('meaning', '')}", ""]
         return "\n".join(lines)
+
+
+def _interpret(gene: str, category: str, v: Variant) -> str:
+    """One plain-language sentence a non-specialist can understand."""
+    two = (v.alt_copies or 0) >= 2
+    if category == "risk":
+        return "A risk factor: it changes the odds, it does not decide the outcome."
+    if gene in RECESSIVE:
+        return ("Two copies: consistent with being affected — confirm clinically." if two else
+                "Carrier (one copy): usually healthy, but children could inherit it; partner testing is often offered.")
+    if gene in DOMINANT:
+        return "One copy is enough to raise risk: genetic counselling and confirmatory testing are recommended."
+    return "Discuss with a genetic counsellor."
 
 
 def _norm_key(q: str) -> str:

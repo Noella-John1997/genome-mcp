@@ -31,6 +31,10 @@ def main(argv: list[str] | None = None) -> int:
     g.add_argument("gene")
     g.add_argument("--vcf")
 
+    w = sub.add_parser("web", help="open the web app")
+    w.add_argument("--host", default="127.0.0.1")
+    w.add_argument("--port", type=int, default=int(__import__("os").getenv("PORT", "8000")))
+
     sub.add_parser("verify-snapshot", help="re-check the bundled annotation table against Ensembl (internet)")
 
     args = p.parse_args(argv)
@@ -42,6 +46,10 @@ def main(argv: list[str] | None = None) -> int:
     if args.cmd == "ask":
         from .agent import ask
         print(asyncio.run(ask(args.question, args.vcf, args.llm)))
+        return 0
+    if args.cmd == "web":
+        from .web.app import run
+        run(args.host, args.port)
         return 0
     if args.cmd == "verify-snapshot":
         return _verify_snapshot()

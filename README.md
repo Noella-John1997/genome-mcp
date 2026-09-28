@@ -59,6 +59,26 @@ pytest -q                                      # run the tests
 
 Use your own file: add `--vcf path/to/file.vcf` (or `.vcf.gz`) to any command. Coordinates must be **GRCh38**.
 
+## Web app
+
+![genome-mcp web app](docs/screenshots/desktop-light.png)
+
+```bash
+genome-mcp web           # open http://127.0.0.1:8000
+```
+
+Use the synthetic demo sample or upload your own `.vcf` / `.vcf.gz` (≤ 20 MB, GRCh38). Ask a question in
+plain English and the page shows **which MCP tool was called with which arguments**, a friendly answer,
+and the raw JSON the AI model would receive. Below: QC tiles, clinically relevant findings with a
+plain-language interpretation (carrier vs raised risk), APOE, medicines, and a gene explorer.
+
+| Dark mode | Phone |
+| --- | --- |
+| ![](docs/screenshots/desktop-dark.png) | ![](docs/screenshots/mobile.png) |
+
+**Put it online for free** (Render or Hugging Face Spaces): see [`deploy/`](deploy/).
+`Live demo: https://genome-mcp.onrender.com` *(replace with your URL)*
+
 ### Use it from Claude Desktop
 
 1. Find the full path of the installed command: `which genome-mcp` (Windows: `where genome-mcp`).
@@ -112,6 +132,7 @@ marked `LowQual` — the tools skip it, as a real pipeline should.
 
 | Command | What it does |
 | --- | --- |
+| `genome-mcp web [--port 8000]` | Web app in the browser |
 | `genome-mcp serve [--vcf F] [--live]` | Run the MCP server over stdio (`--live` adds Ensembl lookups) |
 | `genome-mcp ask "question" [--vcf F] [--llm]` | MCP client: routes the question to a tool, or lets an LLM choose |
 | `genome-mcp report [--vcf F] [--out F]` | Markdown report |
@@ -128,6 +149,9 @@ marked `LowQual` — the tools skip it, as a real pipeline should.
 | [`genome_mcp/annotation/`](genome_mcp/annotation/) | Offline ClinVar snapshot + live Ensembl/MyVariant clients |
 | [`genome_mcp/server/`](genome_mcp/server/) | The MCP server (tools + resource) |
 | [`genome_mcp/agent/`](genome_mcp/agent/) | MCP client: rule router and LLM tool-calling loop |
+| [`genome_mcp/web/`](genome_mcp/web/) | Web app (FastAPI + plain HTML/JS) |
+| [`deploy/`](deploy/) | Free hosting guides (Render, Hugging Face, Docker) |
+| [`docs/`](docs/) | Screenshots |
 | [`genome_mcp/data/`](genome_mcp/data/) | Demo VCF, gene table, annotation snapshot |
 | [`tests/`](tests/) | pytest suite, including an end-to-end MCP stdio test |
 | [`examples/`](examples/) | Claude Desktop config, example questions, sample report |

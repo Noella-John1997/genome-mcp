@@ -1,0 +1,7 @@
+.venv
+.git
+*.db
+*.jsonl
+reports
+.cache
+__pycache__
