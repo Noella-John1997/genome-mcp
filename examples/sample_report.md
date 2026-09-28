@@ -1,4 +1,4 @@
-# Genome report — DEMO_SAMPLE
+# Genome report - DEMO_SAMPLE
 
 > Educational demo only. Not a medical device and not medical advice. Confirm any finding with a certified clinical lab and a genetic counsellor.
 
@@ -37,4 +37,4 @@ _Heterozygous pathogenic variants in recessive-disease genes (e.g. CFTR, HFE, HB
 
 ## APOE
 
-**e3/e4** — One e4 copy: increased risk of late-onset Alzheimer disease vs e3/e3 (roughly 2-3x).
+**e3/e4** - One e4 copy: increased risk of late-onset Alzheimer disease vs e3/e3 (roughly 2-3x).

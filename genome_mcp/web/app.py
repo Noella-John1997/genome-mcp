@@ -3,7 +3,7 @@
     genome-mcp web      ->  http://127.0.0.1:8000
 
 The "Ask" box uses the same question router and the same tool functions as
-the MCP server, and shows which tool was called — so the page doubles as a
+the MCP server, and shows which tool was called - so the page doubles as a
 visual explanation of how an AI agent uses MCP tools.
 
 Uploads are kept in a temp folder for 30 minutes, then deleted.
@@ -54,7 +54,7 @@ def create_app() -> FastAPI:
     demo = GenomeService(DEMO_VCF)
     sessions: dict[str, dict] = {}
 
-    app = FastAPI(title="genome-mcp", description="Ask your genome — web + MCP")
+    app = FastAPI(title="genome-mcp", description="Ask your genome - web + MCP")
     app.mount("/static", StaticFiles(directory=STATIC), name="static")
 
     def _gc() -> None:
@@ -68,7 +68,7 @@ def create_app() -> FastAPI:
         _gc()
         s = sessions.get(sid)
         if not s:
-            raise HTTPException(404, "session expired — upload the file again")
+            raise HTTPException(404, "session expired - upload the file again")
         s["ts"] = time.time()
         return s["svc"]
 
@@ -90,7 +90,7 @@ def create_app() -> FastAPI:
             raise HTTPException(503, "server busy, try again in a few minutes")
         data = await file.read(MAX_UPLOAD_BYTES + 1)
         if len(data) > MAX_UPLOAD_BYTES:
-            raise HTTPException(413, "file larger than 20 MB — use the CLI for big files")
+            raise HTTPException(413, "file larger than 20 MB - use the CLI for big files")
         sid = uuid.uuid4().hex
         d = tmp_root / sid
         d.mkdir()

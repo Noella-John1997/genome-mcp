@@ -1,4 +1,4 @@
-# `genome_mcp/` — the package
+# `genome_mcp/` - the package
 
 | File / folder | Purpose |
 | --- | --- |

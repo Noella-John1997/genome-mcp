@@ -1,4 +1,4 @@
-# genome-mcp — "Ask your genome" through the Model Context Protocol
+# genome-mcp - "Ask your genome" through the Model Context Protocol
 
 ![python](https://img.shields.io/badge/python-3.10%2B-blue) ![MCP](https://img.shields.io/badge/MCP-server-purple) ![tests](https://img.shields.io/badge/tests-pytest-green) ![license](https://img.shields.io/badge/license-MIT-lightgrey)
 
@@ -9,15 +9,15 @@ own agent and ask in plain English:
 > *"Do I carry anything in BRCA1?"* · *"Am I a carrier for any disease?"* ·
 > *"Is warfarin a concern for me?"* · *"What's my APOE status?"*
 
-The model doesn't guess from memory — it calls real tools that read your file, match variants
+The model doesn't guess from memory - it calls real tools that read your file, match variants
 against curated annotations, and apply genetics rules (zygosity, carrier vs affected, APOE haplotypes,
 pharmacogenomics), then explains the result simply.
 
-> ⚠️ Educational project. Not a medical device, not medical advice. The bundled sample is **synthetic**.
+> **Note:** educational project. Not a medical device, not medical advice. The bundled sample is **synthetic**.
 
 ---
 
-## Why this is interesting (in simple words)
+## Why this is interesting
 
 - **Bioinformatics × AI agents.** Most genomics tools are command-line programs for specialists.
   MCP lets an LLM use them safely: the LLM handles language, the tools handle facts.
@@ -112,7 +112,7 @@ genome-mcp ask "Explain my pharmacogenomic results for a doctor" --llm
 | `vcf_summary` | How many variants, which types, Ts/Tv and het/hom QC ratios |
 | `query_region` | Variants in `chrom:start-end` |
 | `gene_variants` | Variants in or near a gene, with annotations |
-| `lookup_variant` | One variant by rsID or `chrom:pos:ref:alt` — what it is and whether you carry it |
+| `lookup_variant` | One variant by rsID or `chrom:pos:ref:alt` - what it is and whether you carry it |
 | `clinically_relevant` | Pathogenic / risk-factor variants you carry, ranked, with carrier guidance |
 | `pharmacogenomics` | Drug-response variants (warfarin, clopidogrel, statins, 5-FU) |
 | `apoe_genotype` | ε2/ε3/ε4 genotype and what it means |
@@ -126,7 +126,7 @@ Resource: `genome://genes` lists the genes the server knows.
 See [`examples/sample_report.md`](examples/sample_report.md). The synthetic sample is a heterozygous
 carrier of pathogenic variants in **HFE** (hemochromatosis) and **CFTR** (cystic fibrosis), carries a
 **BRCA1** frameshift, is **APOE ε3/ε4**, and has several pharmacogenomic variants. One CYP2C9 call is
-marked `LowQual` — the tools skip it, as a real pipeline should.
+marked `LowQual` - the tools skip it, as a real pipeline should.
 
 ## Commands
 
@@ -185,4 +185,4 @@ star-allele calling for CYP2D6 · HTTP (streamable) MCP transport.
 
 ## License
 
-MIT — see [LICENSE](LICENSE).
+MIT - see [LICENSE](LICENSE).

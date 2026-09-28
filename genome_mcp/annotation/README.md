@@ -1,6 +1,6 @@
-# `annotation/` — what is known about a variant
+# `annotation/` - what is known about a variant
 
-## `snapshot.py` — offline, always available
+## `snapshot.py` - offline, always available
 
 `ClinVarSnapshot` loads `data/clinvar_snapshot.tsv`: ~15 well-known variants with gene, protein change,
 significance, condition/drug and a category (`disease`, `risk`, `pharmacogenomic`, `trait`).
@@ -8,7 +8,7 @@ significance, condition/drug and a category (`disease`, `risk`, `pharmacogenomic
 Matching is done on the exact allele (`chrom:pos:ref:alt`) first, then on rsID. Exact-allele matching
 matters: a different ALT at the same position can have a completely different meaning.
 
-## `live.py` — online, optional
+## `live.py` - online, optional
 
 `LiveAnnotator` queries free public APIs and caches every response in `.cache/`:
 

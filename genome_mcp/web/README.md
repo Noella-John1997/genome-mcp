@@ -1,4 +1,4 @@
-# `web/` — the browser app
+# `web/` - the browser app
 
 `app.py` builds a FastAPI app (`create_app()`), started with `genome-mcp web`.
 
@@ -14,7 +14,7 @@
 | `GET /health`, `GET /docs` | Health check and Swagger docs |
 
 Use `demo` as the session id for the bundled synthetic sample. The Ask box uses the **same router
-and the same tool functions** as the MCP server, and the page shows the tool call — a visual
+and the same tool functions** as the MCP server, and the page shows the tool call - a visual
 explanation of what an AI agent does over MCP.
 
-- [`static/`](static/) — the HTML, CSS and JS files.
+- [`static/`](static/) - the HTML, CSS and JS files.

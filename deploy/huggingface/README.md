@@ -1,6 +1,5 @@
 ---
 title: genome-mcp
-emoji: 🧬
 colorFrom: indigo
 colorTo: blue
 sdk: docker

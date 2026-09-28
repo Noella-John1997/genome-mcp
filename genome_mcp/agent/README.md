@@ -1,4 +1,4 @@
-# `agent/` — an MCP client
+# `agent/` - an MCP client
 
 `ask.py` shows the *client* side of MCP:
 

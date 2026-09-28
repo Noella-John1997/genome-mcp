@@ -1,4 +1,4 @@
-# `data/` — bundled data
+# `data/` - bundled data
 
 | File | What it is |
 | --- | --- |

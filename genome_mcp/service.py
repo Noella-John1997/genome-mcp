@@ -146,7 +146,7 @@ class GenomeService:
         cr = self.clinically_relevant()
         pgx = self.pharmacogenomics()
         ap = self.apoe()
-        lines = [f"# Genome report — {s['sample']}", "", f"> {DISCLAIMER}", "",
+        lines = [f"# Genome report - {s['sample']}", "", f"> {DISCLAIMER}", "",
                  "## Quality control", "",
                  f"| Metric | Value |", "| --- | --- |",
                  f"| Variants | {s['variants']} |", f"| Passing filters | {s['pass_filter']} |",
@@ -164,7 +164,7 @@ class GenomeService:
         lines += ["## Pharmacogenomics", "", "| Gene | Variant | Copies | Effect |", "| --- | --- | --- | --- |"]
         for r in pgx["results"]:
             lines.append(f"| {r['gene']} | {r['rsid']} | {r.get('copies_of_variant', '-')} | {r.get('effect', r.get('status'))} |")
-        lines += ["", "## APOE", "", f"**{ap['genotype']}** — {ap.get('meaning', '')}", ""]
+        lines += ["", "## APOE", "", f"**{ap['genotype']}** - {ap.get('meaning', '')}", ""]
         return "\n".join(lines)
 
 
@@ -174,7 +174,7 @@ def _interpret(gene: str, category: str, v: Variant) -> str:
     if category == "risk":
         return "A risk factor: it changes the odds, it does not decide the outcome."
     if gene in RECESSIVE:
-        return ("Two copies: consistent with being affected — confirm clinically." if two else
+        return ("Two copies: consistent with being affected - confirm clinically." if two else
                 "Carrier (one copy): usually healthy, but children could inherit it; partner testing is often offered.")
     if gene in DOMINANT:
         return "One copy is enough to raise risk: genetic counselling and confirmatory testing are recommended."

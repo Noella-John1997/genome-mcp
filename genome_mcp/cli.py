@@ -87,7 +87,7 @@ def _verify_snapshot() -> int:
         bad += not ok
         print(f"  {'OK' if ok else 'XX'} {a.rsid:<12} snapshot {a.chrom}:{a.pos} {a.ref}>{a.alt} | "
               f"Ensembl {e['chrom']}:{e['pos']} {e['alleles']} | {', '.join(e['clinical_significance'])}")
-    print("all good" if not bad else f"{bad} mismatches — fix data/clinvar_snapshot.tsv")
+    print("all good" if not bad else f"{bad} mismatches - fix data/clinvar_snapshot.tsv")
     return 1 if bad else 0
 
 
