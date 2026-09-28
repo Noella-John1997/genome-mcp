@@ -1,0 +1,19 @@
+# rsid	chrom	pos	ref	alt	gene	change	significance	condition_or_drug	category
+# Small offline snapshot of well-known public variants (GRCh38) for demos.
+# Curated from public ClinVar / PharmGKB summaries. Run `genome-mcp verify-snapshot` to re-check against Ensembl.
+# NOT for clinical use.
+rs80357914	17	43124027	ACT	A	BRCA1	c.68_69del (p.Glu23fs)	Pathogenic	Hereditary breast and ovarian cancer syndrome	disease
+rs80359550	13	32340300	GT	G	BRCA2	c.5946del (p.Ser1982fs)	Pathogenic	Hereditary breast and ovarian cancer syndrome	disease
+rs113993960	7	117559590	ATCT	A	CFTR	p.Phe508del	Pathogenic	Cystic fibrosis	disease
+rs1800562	6	26092913	G	A	HFE	p.Cys282Tyr	Pathogenic	Hereditary hemochromatosis	disease
+rs334	11	5227002	T	A	HBB	p.Glu7Val	Pathogenic	Sickle cell anemia	disease
+rs429358	19	44908684	T	C	APOE	p.Cys130Arg (defines e4)	Risk factor	Alzheimer disease (late onset)	risk
+rs7412	19	44908822	C	T	APOE	p.Arg176Cys (defines e2)	Other	APOE e2 allele; hyperlipoproteinemia type III	risk
+rs1801133	1	11796321	G	A	MTHFR	p.Ala222Val (C677T)	Drug response / Benign	Reduced MTHFR activity; common variant	pharmacogenomic
+rs4244285	10	94781859	G	A	CYP2C19	c.681G>A (*2)	Drug response	Clopidogrel: reduced activation (poor metabolizer allele)	pharmacogenomic
+rs1057910	10	94981296	A	C	CYP2C9	p.Ile359Leu (*3)	Drug response	Warfarin: lower dose needed	pharmacogenomic
+rs1799853	10	94942290	C	T	CYP2C9	p.Arg144Cys (*2)	Drug response	Warfarin: lower dose needed	pharmacogenomic
+rs9923231	16	31096368	C	T	VKORC1	c.-1639G>A	Drug response	Warfarin: increased sensitivity	pharmacogenomic
+rs4149056	12	21178615	T	C	SLCO1B1	p.Val174Ala (*5)	Drug response	Simvastatin: higher myopathy risk	pharmacogenomic
+rs3918290	1	97450058	C	T	DPYD	c.1905+1G>A (*2A)	Drug response / Pathogenic	Fluoropyrimidines: severe toxicity risk	pharmacogenomic
+rs4988235	2	135851076	G	A	MCM6	LCT -13910C>T	Other	Lactase persistence (can digest milk as adult)	trait

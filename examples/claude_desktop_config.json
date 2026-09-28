@@ -1,0 +1,8 @@
+{
+  "mcpServers": {
+    "genome": {
+      "command": "/ABSOLUTE/PATH/TO/genome-mcp/.venv/bin/genome-mcp",
+      "args": ["serve", "--vcf", "/ABSOLUTE/PATH/TO/your_sample.vcf"]
+    }
+  }
+}
